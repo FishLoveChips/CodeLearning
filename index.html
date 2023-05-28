@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Webpage</title>
+  <style>
+    /* 可选的网格布局样式 */
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div style="grid-column: 1; grid-row: 1;">
+      <input type="range" min="1" max="5" id="input1">
+      <span id="value1"></span>
+    </div>
+    <div style="grid-column: 2; grid-row: 1;">
+      <input type="range" min="2" max="10" id="input2">
+      <span id="value2"></span>
+    </div>
+    <div style="grid-column: 1 / span 2; grid-row: 2;">
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script>
+    const input1 = document.getElementById('input1'); // 获取第一个滑动条的元素
+    const input2 = document.getElementById('input2'); // 获取第二个滑动条的元素
+    const value1 = document.getElementById('value1'); // 获取显示第一个滑动条值的元素
+    const value2 = document.getElementById('value2'); // 获取显示第二个滑动条值的元素
+    const result = document.getElementById('result'); // 获取显示结果的元素
+
+    input1.addEventListener('input', updateResult); // 给第一个滑动条添加输入事件监听器
+    input2.addEventListener('input', updateResult); // 给第二个滑动条添加输入事件监听器
+
+    function updateResult() {
+      const val1 = parseInt(input1.value); // 获取第一个滑动条的值并转为整数
+      const val2 = parseInt(input2.value); // 获取第二个滑动条的值并转为整数
+      const multiplicationResult = val1 * val2; // 计算两个滑动条值的乘积
+
+      value1.textContent = `Value 1: ${val1}`; // 在页面上显示第一个滑动条的当前值
+      value2.textContent = `Value 2: ${val2}`; // 在页面上显示第二个滑动条的当前值
+      result.textContent = `Result: ${multiplicationResult}`; // 在页面上显示乘积的结果
+    }
+  </script>
+</body>
+</html>
